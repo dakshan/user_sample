@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = Project.new
+    @project = Project.new(user_id: params[:user_id])
   end
 
   # GET /projects/1/edit
@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
 
   # POST /projects
   def create
-    @project = Project.new(user_params)
+    @project = Project.new(user_params.merge(user_id: params[:user_id]))
 
     respond_to do |format|
       if @project.save

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :project
+  has_many :projects, inverse_of: :user
 
   validates :name, presence: true
 end
